@@ -5,6 +5,8 @@
  */
 package com.nms.go.service;
 
-public interface UserService {
+import com.nms.go.model.User;
 
+public interface UserService {
+    public User addUser(User user);
 }

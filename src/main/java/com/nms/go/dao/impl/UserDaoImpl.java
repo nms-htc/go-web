@@ -9,7 +9,7 @@ import com.nms.go.dao.UserDao;
 import com.nms.go.model.User;
 import org.springframework.stereotype.Repository;
 
-@Repository
+@Repository("userDao")
 public class UserDaoImpl extends DaoImpl<User, Long> implements UserDao {
 
 }

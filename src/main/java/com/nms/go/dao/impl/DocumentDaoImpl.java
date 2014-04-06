@@ -9,7 +9,7 @@ import com.nms.go.dao.DocumentDao;
 import com.nms.go.model.Document;
 import org.springframework.stereotype.Repository;
 
-@Repository
+@Repository("documentDao")
 public class DocumentDaoImpl extends DaoImpl<Document, Long> implements DocumentDao {
 
 }

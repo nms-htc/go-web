@@ -4,6 +4,8 @@
               xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
               xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-facesconfig_2_2.xsd">
 
+    <!-- Application configuration -->
+    
     <application>
         <el-resolver>org.springframework.web.jsf.el.SpringBeanFacesELResolver</el-resolver>
         
@@ -11,6 +13,17 @@
             <base-name>i18n.Messages</base-name>
             <var>msg</var>
         </resource-bundle>
-        <message-bundle>i18n.i18nFacesMessage</message-bundle>
+        <message-bundle>i18n.i18nFacesMessages</message-bundle>
     </application>
+    
+    <!-- Navigations configuration-->
+    
+    <navigation-rule> 
+        <from-view-id>*</from-view-id>
+        <navigation-case>
+            <from-outcome>goToAdmin</from-outcome>
+            <to-view-id>admin/go_management.xhtml</to-view-id>
+        </navigation-case>
+    </navigation-rule>
+    
 </faces-config>

@@ -9,7 +9,7 @@ import com.nms.go.dao.PageDao;
 import com.nms.go.model.Page;
 import org.springframework.stereotype.Repository;
 
-@Repository
+@Repository("pageDao")
 public class PageDaoImpl extends DaoImpl<Page, Long> implements PageDao {
 
 }

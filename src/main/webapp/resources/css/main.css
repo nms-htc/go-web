@@ -1,0 +1,55 @@
+/*
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+*/
+/* 
+    Created on : Apr 4, 2014, 2:40:23 PM
+    Author     : cuongnt
+*/
+@import "reset.css";
+
+#wrapper {
+    width: 1280px;
+    margin: 0 auto;
+}
+
+div#header {
+    height: 100px;
+}
+
+#mainNav {
+
+}
+
+#mainNav ul {
+    height: 40px;
+    display: block;
+    border-radius: 10px 10px 10px 10px;
+    width: 100%;
+    padding-left: 10px;
+    background: #f1f1f1;
+}
+
+#mainNav ul li {
+    display: block;
+    background: #f1f1f1;
+}
+
+#mainNav ul li a {
+    /*    display:block;*/
+    float: left;
+    line-height: 15px;
+    padding: 10px;
+    color:  #414141;
+}
+
+#mainNav ul li a:hover {
+    background:  #F58220;
+    color: #f1f1f1;
+}
+
+
+
+
+

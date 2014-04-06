@@ -9,7 +9,7 @@ import com.nms.go.dao.CategoryDao;
 import com.nms.go.model.Category;
 import org.springframework.stereotype.Repository;
 
-@Repository
+@Repository("categoryDao")
 public class CategoryDaoImpl extends DaoImpl<Category, Long> implements CategoryDao{
 
 }

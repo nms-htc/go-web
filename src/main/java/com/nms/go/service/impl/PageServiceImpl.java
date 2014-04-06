@@ -5,10 +5,18 @@
  */
 package com.nms.go.service.impl;
 
+import com.nms.go.dao.PageDao;
 import com.nms.go.service.PageService;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-@Service
+@Service("pageService")
 public class PageServiceImpl implements PageService {
 
+    private PageDao pageDao;
+
+    @Autowired
+    public void setPageDao(PageDao pageDao) {
+        this.pageDao = pageDao;
+    }
 }
