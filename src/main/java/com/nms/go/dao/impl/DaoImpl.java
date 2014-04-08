@@ -6,12 +6,13 @@
 package com.nms.go.dao.impl;
 
 import com.nms.go.dao.Dao;
-import com.nms.go.util.CustomHibernateDaoSupport;
 import java.io.Serializable;
 import java.lang.reflect.ParameterizedType;
 import java.util.List;
+import javax.inject.Inject;
 import org.hibernate.Criteria;
 import org.hibernate.LockOptions;
+import org.hibernate.SessionFactory;
 import org.hibernate.criterion.Criterion;
 import org.hibernate.criterion.Example;
 
@@ -21,7 +22,14 @@ import org.hibernate.criterion.Example;
  * @param <T>
  * @param <ID>
  */
-public abstract class DaoImpl<T, ID extends Serializable> extends CustomHibernateDaoSupport implements Dao<T, ID> {
+public abstract class DaoImpl<T, ID extends Serializable> implements Dao<T, ID> {
+
+    @Inject
+    protected SessionFactory sessionFactory;
+
+    public void setSessionFactory(SessionFactory sessionFactory) {
+        this.sessionFactory = sessionFactory;
+    }
 
     protected Class<T> persistentClass;
 
@@ -36,7 +44,7 @@ public abstract class DaoImpl<T, ID extends Serializable> extends CustomHibernat
 
     @Override
     public T findById(ID id) {
-        return (T) getSession().get(getPersistentClass(), id);
+        return (T) sessionFactory.getCurrentSession().get(getPersistentClass(), id);
     }
 
     @Override
@@ -44,9 +52,9 @@ public abstract class DaoImpl<T, ID extends Serializable> extends CustomHibernat
         T entity;
 
         if (lock) {
-            entity = (T) getSession().get(getPersistentClass(), id, LockOptions.UPGRADE);
+            entity = (T) sessionFactory.getCurrentSession().get(getPersistentClass(), id, LockOptions.UPGRADE);
         } else {
-            entity = (T) getSession().get(getPersistentClass(), id);
+            entity = (T) sessionFactory.getCurrentSession().get(getPersistentClass(), id);
         }
 
         return entity;
@@ -54,7 +62,7 @@ public abstract class DaoImpl<T, ID extends Serializable> extends CustomHibernat
 
     @Override
     public T fetchById(ID id) {
-        return (T) getSession().load(getPersistentClass(), id);
+        return (T) sessionFactory.getCurrentSession().load(getPersistentClass(), id);
     }
 
     @Override
@@ -62,9 +70,9 @@ public abstract class DaoImpl<T, ID extends Serializable> extends CustomHibernat
         T entity;
 
         if (lock) {
-            entity = (T) getSession().load(getPersistentClass(), id, LockOptions.UPGRADE);
+            entity = (T) sessionFactory.getCurrentSession().load(getPersistentClass(), id, LockOptions.UPGRADE);
         } else {
-            entity = (T) getSession().load(getPersistentClass(), id);
+            entity = (T) sessionFactory.getCurrentSession().load(getPersistentClass(), id);
         }
 
         return entity;
@@ -77,7 +85,7 @@ public abstract class DaoImpl<T, ID extends Serializable> extends CustomHibernat
 
     @Override
     public List<T> findByExample(T exampleInstance, String[] excludeProperties) {
-        Criteria crit = getSession().createCriteria(getPersistentClass());
+        Criteria crit = sessionFactory.getCurrentSession().createCriteria(getPersistentClass());
         Example example = Example.create(exampleInstance);
         for (String exclude : excludeProperties) {
             example.excludeProperty(exclude);
@@ -88,21 +96,21 @@ public abstract class DaoImpl<T, ID extends Serializable> extends CustomHibernat
 
     @Override
     public T makePersistent(T entity) {
-        getSession().saveOrUpdate(entity);
+        sessionFactory.getCurrentSession().saveOrUpdate(entity);
         return entity;
     }
 
     @Override
     public void makeTransient(T entity) {
-        getSession().delete(entity);
+        sessionFactory.getCurrentSession().delete(entity);
     }
 
     public void flush() {
-        getSession().flush();
+        sessionFactory.getCurrentSession().flush();
     }
 
     public void clear() {
-        getSession().clear();
+        sessionFactory.getCurrentSession().clear();
     }
 
     /**
@@ -112,7 +120,7 @@ public abstract class DaoImpl<T, ID extends Serializable> extends CustomHibernat
      * @return
      */
     protected List<T> findByCriteria(Criterion... criterions) {
-        Criteria criteria = getSession().createCriteria(getPersistentClass());
+        Criteria criteria = sessionFactory.getCurrentSession().createCriteria(getPersistentClass());
 
         for (Criterion criterion : criterions) {
             criteria.add(criterion);
@@ -120,5 +128,11 @@ public abstract class DaoImpl<T, ID extends Serializable> extends CustomHibernat
         }
 
         return criteria.list();
+    }
+
+    @Override
+    public T update(T entity) {
+        sessionFactory.getCurrentSession().update(entity);
+        return entity;
     }
 }

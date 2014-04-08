@@ -9,9 +9,18 @@ and open the template in the editor.
 */
 @import "reset.css";
 
+body {
+    font-family: Arial,Helvetica,sans-serif;
+    font-size: 12px;
+}
+
 #wrapper {
     width: 1280px;
     margin: 0 auto;
+}
+
+#main-content {
+    padding: 5px;
 }
 
 div#header {
@@ -29,6 +38,24 @@ div#header {
     width: 100%;
     padding-left: 10px;
     background: #f1f1f1;
+}
+
+
+button, input[type=submit] {
+    font-weight: bold;
+    line-height: 12px;
+    padding: 5px;
+    background: #fff;
+    color: #414141;
+    border: 1px solid #515151;
+    border-radius: 5px;
+    margin: 5px;
+}
+
+button:hover, input[type=submit]:hover {
+    background: #F58220;
+    color: #f1f1f1;
+    border-color: #f1f1f1;
 }
 
 #mainNav ul li {
@@ -49,7 +76,66 @@ div#header {
     color: #f1f1f1;
 }
 
+h1 {
+    color: #414141;
+    font-size: 18px;
+}
 
+/*datatable stylesheet*/
 
+.data-table {
+    border-collapse: collapse;
+    margin: 10px 0;
+}
 
+.data-table-header {
+    background: #F58220;
+    font-weight: bold;
+    padding: 5px;
+    color: #f1f1f1;
+}
 
+.data-table-odd-row ,.data-table-even-row {
+    padding: 10px;
+}
+
+.data-table-odd-row td,.data-table-even-row td{
+    padding: 10px;
+    color: #515151;
+}
+
+.data-table-even-row {
+
+}
+
+.data-table tr:hover {
+    background: #f1f1f1;
+}
+
+.data-table-footer {
+    padding: 10px;
+}
+
+.empty-table-message {
+    color: red;
+    font-weight: bold;
+    font-style: italic;
+}
+
+/*form stylesheet*/
+
+input[type=text] {
+    outline: none;
+}
+
+div.form-field {
+    margin: 5px 0;
+}
+
+div.form-field label {
+    min-width: 120px;
+    display:block;
+    float:left;
+    color: #414141;
+    font-weight: bolder;
+}

@@ -6,7 +6,14 @@
 package com.nms.go.service;
 
 import com.nms.go.model.User;
+import java.util.List;
 
 public interface UserService {
     public User addUser(User user);
+    
+    public List<User> getAllUser();
+    
+    public User fetchUser(Long userId);
+    
+    public User update(User user);
 }

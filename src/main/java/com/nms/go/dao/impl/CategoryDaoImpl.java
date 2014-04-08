@@ -7,9 +7,9 @@ package com.nms.go.dao.impl;
 
 import com.nms.go.dao.CategoryDao;
 import com.nms.go.model.Category;
-import org.springframework.stereotype.Repository;
+import javax.inject.Named;
 
-@Repository("categoryDao")
-public class CategoryDaoImpl extends DaoImpl<Category, Long> implements CategoryDao{
+@Named
+public class CategoryDaoImpl extends DaoImpl<Category, Long> implements CategoryDao {
 
 }

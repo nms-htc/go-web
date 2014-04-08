@@ -10,17 +10,17 @@ import com.nms.go.service.UserService;
 import java.io.Serializable;
 import java.util.Date;
 import javax.faces.application.FacesMessage;
-import javax.faces.bean.SessionScoped;
 import javax.faces.context.FacesContext;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Component;
+import javax.inject.Inject;
+import javax.inject.Named;
+import org.springframework.context.annotation.Scope;
 
 /**
  *
  * @author cuongnt
  */
-@Component
-@SessionScoped
+@Named
+@Scope("request")
 public class DocumentManagerBean implements Serializable {
 
     private static final long serialVersionUID = -6714315427287644904L;
@@ -39,9 +39,9 @@ public class DocumentManagerBean implements Serializable {
 
     }
 
+    @Inject
     private UserService userService;
 
-    @Autowired
     public void setUserService(UserService userService) {
         this.userService = userService;
     }

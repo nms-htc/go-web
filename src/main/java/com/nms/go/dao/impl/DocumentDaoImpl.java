@@ -7,9 +7,8 @@ package com.nms.go.dao.impl;
 
 import com.nms.go.dao.DocumentDao;
 import com.nms.go.model.Document;
-import org.springframework.stereotype.Repository;
+import javax.inject.Named;
 
-@Repository("documentDao")
+@Named
 public class DocumentDaoImpl extends DaoImpl<Document, Long> implements DocumentDao {
-
 }

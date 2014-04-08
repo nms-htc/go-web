@@ -7,9 +7,9 @@ package com.nms.go.dao.impl;
 
 import com.nms.go.dao.UserDao;
 import com.nms.go.model.User;
-import org.springframework.stereotype.Repository;
+import javax.inject.Named;
 
-@Repository("userDao")
+@Named
 public class UserDaoImpl extends DaoImpl<User, Long> implements UserDao {
 
 }

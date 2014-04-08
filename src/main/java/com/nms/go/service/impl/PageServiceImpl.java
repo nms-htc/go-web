@@ -7,15 +7,15 @@ package com.nms.go.service.impl;
 
 import com.nms.go.dao.PageDao;
 import com.nms.go.service.PageService;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Service;
+import javax.inject.Inject;
+import javax.inject.Named;
 
-@Service("pageService")
+@Named
 public class PageServiceImpl implements PageService {
 
     private PageDao pageDao;
 
-    @Autowired
+    @Inject
     public void setPageDao(PageDao pageDao) {
         this.pageDao = pageDao;
     }

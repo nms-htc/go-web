@@ -7,9 +7,9 @@ package com.nms.go.dao.impl;
 
 import com.nms.go.dao.PageDao;
 import com.nms.go.model.Page;
-import org.springframework.stereotype.Repository;
+import javax.inject.Named;
 
-@Repository("pageDao")
+@Named
 public class PageDaoImpl extends DaoImpl<Page, Long> implements PageDao {
 
 }

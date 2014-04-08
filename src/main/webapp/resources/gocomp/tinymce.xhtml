@@ -1,0 +1,20 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<ui:component 
+    xmlns="http://www.w3.org/1999/xhtml"
+    xmlns:ui="http://java.sun.com/jsf/facelets"
+    xmlns:cc="http://java.sun.com/jsf/composite"
+    xmlns:h="http://java.sun.com/jsf/html">
+    
+    <cc:interface>
+        <cc:attribute name="value" default="test"/>
+        <cc:attribute name="rows" default="5"/>
+        <cc:attribute name="cols" default="80"/>
+    </cc:interface>
+    
+    <cc:implementation>
+        <h:outputScript name="tinymce/tinymce.min.js" target="head"/>
+        <h:outputScript name="js/tiny-init.js"/>
+        <h:inputTextarea rows="#{cc.attrs.rows}" cols="#{cc.attrs.cols}" styleClass="tinymce" value="#{cc.attrs.value}"/>
+    </cc:implementation>
+    
+</ui:component>
