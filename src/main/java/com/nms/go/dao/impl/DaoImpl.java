@@ -9,12 +9,12 @@ import com.nms.go.dao.Dao;
 import java.io.Serializable;
 import java.lang.reflect.ParameterizedType;
 import java.util.List;
-import javax.inject.Inject;
 import org.hibernate.Criteria;
 import org.hibernate.LockOptions;
 import org.hibernate.SessionFactory;
 import org.hibernate.criterion.Criterion;
 import org.hibernate.criterion.Example;
+import org.springframework.beans.factory.annotation.Autowired;
 
 /**
  *
@@ -24,7 +24,7 @@ import org.hibernate.criterion.Example;
  */
 public abstract class DaoImpl<T, ID extends Serializable> implements Dao<T, ID> {
 
-    @Inject
+    @Autowired
     protected SessionFactory sessionFactory;
 
     public void setSessionFactory(SessionFactory sessionFactory) {
@@ -97,6 +97,7 @@ public abstract class DaoImpl<T, ID extends Serializable> implements Dao<T, ID> 
     @Override
     public T makePersistent(T entity) {
         sessionFactory.getCurrentSession().saveOrUpdate(entity);
+        sessionFactory.getCurrentSession().clear();
         return entity;
     }
 

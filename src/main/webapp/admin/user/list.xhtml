@@ -1,0 +1,55 @@
+<ui:composition
+    xmlns="http://www.w3.org/1999/xhtml"
+    xmlns:ui="http://java.sun.com/jsf/facelets"
+    template="../../template/admin_template.xhtml"
+    xmlns:h="http://java.sun.com/jsf/html"
+    xmlns:f="http://java.sun.com/jsf/core">
+
+    <ui:define name="body">
+        <h:form>
+
+            <h1><h:outputText value="#{msg['user-list']}"/></h1>
+
+            <h:dataTable 
+                value="${userBean.instances}"
+                var="user"
+                border="1"
+                width="900"
+                headerClass="data-table-header"
+                styleClass="data-table"
+                rowClasses="data-table-odd-row,data-table-even-row"
+                footerClass="data-table-footer"
+                >
+                <h:column>
+                    <f:facet name="header"><h:outputText value="#{msg['first-name']}"/></f:facet>
+                    <h:outputText value="#{user.firstName}"/>
+                    <h:link outcome="edit" value="#{user.firstName}">
+                        <f:param name="userId" value="#{user.userId}"/>
+                    </h:link>
+                </h:column>
+
+                <h:column>
+                    <f:facet name="header"><h:outputText value="#{msg['last-name']}"/></f:facet>
+                    <h:outputText value="#{user.lastName}"/>
+                </h:column>
+
+                <h:column>
+                    <f:facet name="header"><h:outputText value="#{msg['user-name']}"/></f:facet>
+                    <h:outputText value="#{user.userName}"/>
+                </h:column>
+
+                <h:column>
+                    <f:facet name="header"><h:outputText value="#{msg['disabled']}"/></f:facet>
+                    <h:outputText value="#{user.disabled ? 'True' : 'False'}"/>
+                </h:column>
+
+
+                <f:facet name="footer">
+                    <h:outputText rendered="#{usersBackingBean.users ==  null || usersBackingBean.users.size() == 0}" class="empty-table-message" value="#{msg['no-row-was-found']}"/>
+                </f:facet>
+            </h:dataTable>
+
+            <h:button value="#{msg['add-new-user']}" outcome="edit?faces-redirect=true"/>
+        </h:form>
+    </ui:define>
+</ui:composition>

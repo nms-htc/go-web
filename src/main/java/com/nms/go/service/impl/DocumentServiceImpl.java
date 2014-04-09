@@ -6,17 +6,17 @@
 package com.nms.go.service.impl;
 
 import com.nms.go.dao.DocumentDao;
+import com.nms.go.model.Document;
 import com.nms.go.service.DocumentService;
-import javax.inject.Inject;
-import javax.inject.Named;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
-@Named
-public class DocumentServiceImpl implements DocumentService {
-    
-    @Inject
-    private DocumentDao documentDao;
+@Service("documentService")
+public class DocumentServiceImpl extends BaseServiceImpl<Document, Long, DocumentDao> implements DocumentService {
 
-    public void setDocumentDao(DocumentDao documentDao) {
-        this.documentDao = documentDao;
+    @Override
+    @Autowired
+    public void setDao(DocumentDao documentDao) {
+        this.dao = documentDao;
     }
 }

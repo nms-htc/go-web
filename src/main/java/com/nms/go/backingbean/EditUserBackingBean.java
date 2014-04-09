@@ -8,20 +8,20 @@ package com.nms.go.backingbean;
 import com.nms.go.model.User;
 import com.nms.go.service.UserService;
 import com.nms.go.util.JsfUtils;
-import com.nms.go.util.MessageUtil;
 import java.io.Serializable;
 import java.util.logging.Logger;
 import javax.annotation.PostConstruct;
+import javax.faces.bean.ViewScoped;
 import javax.inject.Inject;
-import javax.inject.Named;
-import org.springframework.context.annotation.Scope;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
 
 /**
  *
  * @author cuongnt
  */
-@Named
-@Scope("request")
+@Component
+@ViewScoped
 public class EditUserBackingBean implements Serializable {
 
     // serialVersionUID
@@ -31,8 +31,12 @@ public class EditUserBackingBean implements Serializable {
 
     private User user;
 
-    @Inject
+    @Autowired
     private UserService userService;
+    
+    public void setUserService(UserService userService) {
+        this.userService = userService;
+    }
 
     public EditUserBackingBean() {
     }
@@ -44,13 +48,13 @@ public class EditUserBackingBean implements Serializable {
             isNew = true;
             user = new User();
         } else {
-            user = userService.fetchUser(Long.valueOf(userId));
+            user = userService.load(Long.valueOf(userId));
         }
     }
 
     public String save() {
         if (isNew) {
-            userService.addUser(user);
+            userService.add(user);
         } else {
             userService.update(user);
         }

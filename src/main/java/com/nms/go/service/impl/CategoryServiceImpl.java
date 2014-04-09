@@ -6,18 +6,17 @@
 package com.nms.go.service.impl;
 
 import com.nms.go.dao.CategoryDao;
+import com.nms.go.model.Category;
 import com.nms.go.service.CategoryService;
-import javax.inject.Inject;
-import javax.inject.Named;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
-@Named
-public class CategoryServiceImpl implements CategoryService {
+@Service("categoryService")
+public class CategoryServiceImpl extends BaseServiceImpl<Category, Long, CategoryDao> implements CategoryService {
 
-    @Inject
-    private CategoryDao categoryDao;
-
-    
-    public void setCategoryDao(CategoryDao categoryDao) {
-        this.categoryDao = categoryDao;
+    @Override
+    @Autowired
+    public void setDao(CategoryDao categoryDao) {
+        this.dao = categoryDao;
     }
 }

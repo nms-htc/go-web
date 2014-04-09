@@ -40,22 +40,21 @@ div#header {
     background: #f1f1f1;
 }
 
-
-button, input[type=submit] {
-    font-weight: bold;
+button, input[type=submit], a.button-link, input[type=button] {
+    font-size: 16px;
     line-height: 12px;
     padding: 5px;
     background: #fff;
     color: #414141;
     border: 1px solid #515151;
     border-radius: 5px;
-    margin: 5px;
+    margin: 5px 5px 5px 0;
 }
 
-button:hover, input[type=submit]:hover {
+
+button:hover, input[type=submit]:hover,input[type=button]:hover, a.button-link:hover {
     background: #F58220;
     color: #f1f1f1;
-    border-color: #f1f1f1;
 }
 
 #mainNav ul li {
@@ -138,4 +137,8 @@ div.form-field label {
     float:left;
     color: #414141;
     font-weight: bolder;
+}
+
+.clear {
+    clear: both;
 }

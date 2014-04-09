@@ -6,17 +6,18 @@
 package com.nms.go.service.impl;
 
 import com.nms.go.dao.PageDao;
+import com.nms.go.model.Page;
 import com.nms.go.service.PageService;
-import javax.inject.Inject;
-import javax.inject.Named;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
-@Named
-public class PageServiceImpl implements PageService {
+@Service("pageService")
+public class PageServiceImpl extends BaseServiceImpl<Page, Long, PageDao> implements PageService {
 
-    private PageDao pageDao;
-
-    @Inject
-    public void setPageDao(PageDao pageDao) {
-        this.pageDao = pageDao;
+    @Override
+    @Autowired
+    public void setDao(PageDao pageDao) {
+        this.dao = pageDao;
     }
+
 }

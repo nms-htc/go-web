@@ -3,9 +3,11 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-
 package com.nms.go.service;
 
-public interface DocumentService {
-    
+import com.nms.go.model.Document;
+import java.io.Serializable;
+
+public interface DocumentService extends BaseService<Document, Long> {
+
 }

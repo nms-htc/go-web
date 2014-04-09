@@ -11,16 +11,15 @@ import java.io.Serializable;
 import java.util.List;
 import java.util.logging.Logger;
 import javax.annotation.PostConstruct;
-import javax.faces.bean.RequestScoped;
-import javax.inject.Inject;
-import javax.inject.Named;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Scope;
+import org.springframework.stereotype.Component;
 
 /**
  *
  * @author cuongnt
  */
-@Named
+@Component
 @Scope("request")
 public class UsersBackingBean implements Serializable {
 
@@ -29,8 +28,10 @@ public class UsersBackingBean implements Serializable {
 
     private List<User> users;
 
-    @Inject
+    @Autowired
     private UserService userService;
+    
+    
 
     public UsersBackingBean() {
         
@@ -38,7 +39,7 @@ public class UsersBackingBean implements Serializable {
     
     @PostConstruct
     public void init() {
-        users = userService.getAllUser();
+        users = userService.list();
     }
 
     public List<User> getUsers() {

@@ -11,7 +11,7 @@
 
     <properties>
         <spring.version>3.2.3.RELEASE</spring.version>
-        <hibernate.version>3.6.9.Final</hibernate.version>
+        <hibernate.version>4.1.7.Final</hibernate.version>
         <jsf.version>2.2.6</jsf.version>
         <java.version>1.7</java.version>
         <endorsed.dir>${project.build.directory}/endorsed</endorsed.dir>
@@ -31,31 +31,31 @@
         <dependency>
             <groupId>org.springframework</groupId>
             <artifactId>spring-web</artifactId>
-            <version>3.2.3.RELEASE</version>
+            <version>${spring.version}</version>
         </dependency>
         
         <dependency>
             <groupId>org.springframework.security</groupId>
             <artifactId>spring-security-web</artifactId>
-            <version>3.2.3.RELEASE</version>
+            <version>${spring.version}</version>
         </dependency>
         
         <dependency>
             <groupId>org.springframework</groupId>
             <artifactId>spring-jdbc</artifactId>
-            <version>3.2.3.RELEASE</version>
+            <version>${spring.version}</version>
         </dependency>
         
         <dependency>
             <groupId>org.springframework</groupId>
             <artifactId>spring-orm</artifactId>
-            <version>3.2.3.RELEASE</version>
+            <version>${spring.version}</version>
         </dependency>
         
         <dependency>
             <groupId>org.springframework</groupId>
             <artifactId>spring-tx</artifactId>
-            <version>3.2.3.RELEASE</version>
+            <version>${spring.version}</version>
         </dependency>
 
         <!-- JSF -->
@@ -91,7 +91,7 @@
         <dependency>
             <groupId>org.hibernate</groupId>
             <artifactId>hibernate-core</artifactId>
-            <version>4.1.7.Final</version>
+            <version>${hibernate.version}</version>
         </dependency>
         
         <dependency>

@@ -6,6 +6,9 @@
 
 package com.nms.go.service;
 
-public interface PageService {
+import com.nms.go.model.Page;
+import java.io.Serializable;
+
+public interface PageService extends BaseService<Page, Long> {
     
 }

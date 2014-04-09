@@ -6,6 +6,8 @@
 
 package com.nms.go.service;
 
-public interface CategoryService {
+import com.nms.go.model.Category;
+
+public interface CategoryService extends BaseService<Category, Long> {
     
 }
