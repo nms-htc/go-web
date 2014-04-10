@@ -1,12 +1,81 @@
-<?xml version='1.0' encoding='UTF-8' ?>
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml"
-      xmlns:h="http://xmlns.jcp.org/jsf/html">
-    <h:head>
-        <title>Facelet Title</title>
-    </h:head>
-    <h:body>
-        Hello from Facelets
-    </h:body>
-</html>
+<ui:composition
+    xmlns="http://www.w3.org/1999/xhtml"
+    xmlns:ui="http://java.sun.com/jsf/facelets"
+    template="../../template/admin_template.xhtml"
+    xmlns:h="http://java.sun.com/jsf/html"
+    xmlns:f="http://java.sun.com/jsf/core">
 
+    <f:metadata>
+        <f:viewParam name="pageId" value="#{pageBean.id}"/>
+    </f:metadata>
+
+    <ui:define name="body">
+
+        <h1><h:outputText value="#{msg['add-new-page']}"/></h1>
+
+
+        <h:form>
+
+            <div class="form-field">
+                <label for="title">#{msg['title']}</label>
+                <h:inputText id="title" value="#{pageBean.instance.title}"/>
+            </div>
+
+            <div class="form-field">
+                <label for="type">#{msg['type']}</label>
+                <h:selectOneMenu id="type" value="#{pageBean.instance.type}" 
+                                 converter="#{pageTypeConverter}">
+                    <f:selectItems value="#{pageBean.pageTypes}" 
+                                   var="pageType" 
+                                   itemLabel="#{msg[pageType.label]}" 
+                                   itemValue="#{pageType}"/>
+                </h:selectOneMenu>
+            </div>
+            
+            <div class="form-field">
+                <h:outputLabel value="#{msg['category']}"/>
+                <h:selectOneMenu 
+                    value="#{pageBean.instance.category}" 
+                    converter="#{categoryConverter}"
+                    valueChangeListener="#{pageBean.categoryChange}"
+                >
+                    <f:selectItem itemLabel="--Select--"/>
+                    <f:selectItems 
+                        value="#{pageBean.categories}" 
+                        var="category" 
+                        itemLabel="#{category.title}" 
+                        itemValue="#{category}" 
+                        
+                    />
+                    <f:ajax render="document"/>
+                </h:selectOneMenu>
+            </div>
+            
+            <div class="form-field">
+                <h:outputLabel value="#{msg['document']}" for="document"/>
+                <h:selectOneMenu 
+                    id="document" 
+                    value="#{pageBean.documentId}"
+                >
+                    <f:selectItem itemLabel="--Select--"    />
+                   
+                </h:selectOneMenu>
+            </div>
+
+            <div class="form-field">
+                <h:outputLabel value="#{msg['page-uri']}" for="pageUri"/>
+                <h:inputText id="pageUri" value="#{pageBean.instance.pageUri}"/>
+            </div>
+
+
+            <h:commandButton value="#{msg['save']}" action="#{pageBean.save()}" onclick="if (!confirm('#{msg['do-you-want-to-update']}'))
+                        return false">
+                <f:param name="pageId" value="#{param.pageId}"/>
+            </h:commandButton>
+
+            <h:button value="#{msg['cancel']}" outcome="list?faces-redirect=true"/>
+
+        </h:form>
+
+    </ui:define>
+</ui:composition>

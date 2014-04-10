@@ -18,7 +18,7 @@ import org.springframework.stereotype.Component;
  * @author cuongnt
  */
 @Component
-@Scope("session")
+@Scope("request")
 public class UserBean extends BaseBackingBean<User, UserService> implements Serializable {
 
     // serialVersionUID

@@ -8,9 +8,10 @@ package com.nms.go.backingbean;
 import com.nms.go.model.Category;
 import com.nms.go.service.CategoryService;
 import java.io.Serializable;
+import java.util.Date;
 import java.util.logging.Logger;
-import javax.faces.bean.RequestScoped;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Component;
 
 /**
@@ -18,7 +19,7 @@ import org.springframework.stereotype.Component;
  * @author cuongnt
  */
 @Component
-@RequestScoped
+@Scope("request")
 public class CategoryBean extends BaseBackingBean<Category, CategoryService> implements Serializable {
 
     // serialVersionUID
@@ -42,4 +43,14 @@ public class CategoryBean extends BaseBackingBean<Category, CategoryService> imp
     protected Logger getLogger() {
         return logger;
     }
+
+    @Override
+    public Category createInstance() {
+        
+        Category category =  super.createInstance();
+        category.setCreateDate(new Date());
+        return category;
+    }
+    
+    
 }

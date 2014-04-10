@@ -7,6 +7,8 @@ package com.nms.go.dao;
 
 import java.io.Serializable;
 import java.util.List;
+import org.hibernate.Criteria;
+import org.hibernate.criterion.Criterion;
 
 /**
  *
@@ -33,4 +35,8 @@ public interface Dao<T, ID extends Serializable> {
     T update(T entity);
 
     void makeTransient(T entity);
+    
+    List<T> findByCriteria(Criterion... criterions);
+    
+    Criteria createCriterion();
 }

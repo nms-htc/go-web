@@ -5,9 +5,11 @@
  */
 package com.nms.go.service;
 
+import com.nms.go.model.Category;
 import com.nms.go.model.Document;
 import java.io.Serializable;
+import java.util.List;
 
 public interface DocumentService extends BaseService<Document, Long> {
-
+    public List<Document> findByCategory(Category category);
 }

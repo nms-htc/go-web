@@ -19,12 +19,14 @@ public interface BaseService<T, ID extends Serializable> {
     public T load(ID id);
 
     public T add(T entity);
-    
+
     public T update(T entity);
 
     public void delete(T entity);
-    
+
     public void delete(ID id);
 
     public List<T> list();
+    
+    public List<T> getAll();
 }

@@ -120,7 +120,8 @@ public abstract class DaoImpl<T, ID extends Serializable> implements Dao<T, ID> 
      * @param criterions
      * @return
      */
-    protected List<T> findByCriteria(Criterion... criterions) {
+    @Override
+    public List<T> findByCriteria(Criterion... criterions) {
         Criteria criteria = sessionFactory.getCurrentSession().createCriteria(getPersistentClass());
 
         for (Criterion criterion : criterions) {
@@ -135,5 +136,10 @@ public abstract class DaoImpl<T, ID extends Serializable> implements Dao<T, ID> 
     public T update(T entity) {
         sessionFactory.getCurrentSession().update(entity);
         return entity;
+    }
+
+    @Override
+    public Criteria createCriterion() {
+       return sessionFactory.getCurrentSession().createCriteria(getPersistentClass());
     }
 }

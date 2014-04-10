@@ -7,6 +7,7 @@ package com.nms.go.model;
 
 import java.io.Serializable;
 import java.util.Date;
+import java.util.Objects;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -27,10 +28,10 @@ import javax.persistence.TemporalType;
 @Table(name = "GO_DOCUMENT")
 @SuppressWarnings("PersistenceUnitPresent")
 public class Document implements Serializable {
-    
+
     // serialVersionUID
     private static final long serialVersionUID = 1080711331905991750L;
-    
+
     private Long documentId;
     private Date createdDate;
     private User user;
@@ -38,7 +39,7 @@ public class Document implements Serializable {
     private String imageUrl;
     private String content;
     private Category category;
-    
+
     public Document() {
     }
 
@@ -48,7 +49,6 @@ public class Document implements Serializable {
         return documentId;
     }
 
-    
     public void setDocumentId(Long documentId) {
         this.documentId = documentId;
     }
@@ -104,8 +104,44 @@ public class Document implements Serializable {
     public Category getCategory() {
         return category;
     }
-    
+
     public void setCategory(Category category) {
         this.category = category;
     }
+
+    @Override
+    public int hashCode() {
+        int hash = 0;
+
+        if (documentId != null) {
+            hash += documentId.hashCode();
+        }
+
+        if (category != null) {
+            hash += category.hashCode();
+        }
+        return hash;
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (obj == null) {
+            return false;
+        }
+        if (!(obj instanceof Document)) {
+            return false;
+        }
+        Document other = (Document) obj;
+        if ((this.getDocumentId() == null && other.getDocumentId() != null) || (this.getDocumentId() != null && !this.getDocumentId().equals(other.getDocumentId()))) {
+            return false;
+        }
+
+        if ((this.getCategory() == null && other.getCategory() != null) || (this.getCategory() != null && !this.getCategory().equals(other.getCategory()))) {
+            
+            return false;
+        }
+        
+        return true;
+    }
+
 }

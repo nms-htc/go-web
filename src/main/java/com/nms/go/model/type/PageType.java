@@ -14,4 +14,33 @@ public enum PageType {
     private PageType(int value) {
         _value = value;
     }
+
+    public static PageType fromIntValue(int value) {
+        switch (value) {
+            case 1:
+                return SINGLE_DOCUMENT;
+            case 2:
+                return LIST_DOCUMENT;
+            case 3:
+                return SPECIFIC_PAGE;
+        }
+
+        return null;
+    }
+    
+    public int getValue() {
+        return _value;
+    }
+
+    public String getLabel() {
+        switch (this) {
+            case SINGLE_DOCUMENT:
+                return "single-document";
+            case LIST_DOCUMENT:
+                return "list-document";
+            case SPECIFIC_PAGE:
+                return "specific-page";
+        }
+        return null;
+    }
 }

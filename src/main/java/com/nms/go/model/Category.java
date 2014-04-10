@@ -9,6 +9,7 @@ package com.nms.go.model;
 import java.io.Serializable;
 import java.util.Date;
 import java.util.List;
+import java.util.Objects;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -89,4 +90,36 @@ public class Category implements Serializable {
     public void setDocuments(List<Document> documents) {
         this.documents = documents;
     }
+
+    @Override
+    public int hashCode() {
+        int hash = 0;
+        if (categoryId != null) hash += categoryId.hashCode();
+        if (createDate != null) hash += createDate.hashCode();
+        if (title != null) hash += title.hashCode();
+        return hash;
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (obj == null) {
+            return false;
+        }
+        if (getClass() != obj.getClass()) {
+            return false;
+        }
+        final Category other = (Category) obj;
+        if (!Objects.equals(this.categoryId, other.categoryId)) {
+            return false;
+        }
+        if (!Objects.equals(this.createDate, other.createDate)) {
+            return false;
+        }
+        if (!Objects.equals(this.title, other.title)) {
+            return false;
+        }
+        return true;
+    }
+    
+    
 }

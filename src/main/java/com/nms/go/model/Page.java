@@ -40,6 +40,9 @@ public class Page implements Serializable {
     private int orderNo;
     private boolean disable;
     private PageType type;
+    private Document document;
+    private Category category;
+    private String pageUri;
 
     public Page() {
     }
@@ -65,7 +68,7 @@ public class Page implements Serializable {
     }
     
     @ManyToOne
-    @JoinColumn(name = "userId", nullable = false)
+    @JoinColumn(name = "userId")
     public User getUser() {
         return user;
     }
@@ -107,5 +110,31 @@ public class Page implements Serializable {
     
     public void setType(PageType type) {
         this.type = type;
+    }
+    
+    @ManyToOne
+    public Document getDocument() {
+        return document;
+    }
+    
+    public void setDocument(Document document) {
+        this.document = document;
+    }
+    
+    @ManyToOne
+    public Category getCategory() {
+        return category;
+    }
+    
+    public void setCategory(Category category) {
+        this.category = category;
+    }
+    
+    public String getPageUri() {
+        return pageUri;
+    }
+    
+    public void setPageUri(String pageUri) {
+        this.pageUri = pageUri;
     }
 }

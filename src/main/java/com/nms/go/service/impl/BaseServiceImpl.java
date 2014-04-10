@@ -60,4 +60,9 @@ public abstract class BaseServiceImpl<T, ID extends Serializable, E extends Dao<
     public List<T> list() {
         return dao.findAll();
     }
+
+    @Override
+    public List<T> getAll() {
+        return list();
+    }
 }

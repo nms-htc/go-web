@@ -31,6 +31,14 @@ public abstract class BaseBackingBean<T, S extends BaseService<T, Long>> {
 
     public void setId(Long id) {
         this.id = id;
+        if (id != null) {
+            try {
+                instance = loadInstance();
+            } catch (Exception e) {
+            }
+        } else {
+            instance = createInstance();
+        }
     }
 
     public T getInstance() {

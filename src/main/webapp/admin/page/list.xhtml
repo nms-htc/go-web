@@ -21,35 +21,28 @@
                 footerClass="data-table-footer"
                 >
                 <h:column>
-                    <f:facet name="header"><h:outputText value="#{msg['first-name']}"/></f:facet>
-                    <h:outputText value="#{page}"/>
-                    <h:link outcome="edit" value="#{user.firstName}">
-                        <f:param name="userId" value="#{user.userId}"/>
+                    <f:facet name="header"><h:outputText value="#{msg['title']}"/></f:facet>
+                    <h:link outcome="edit" value="#{page.title}">
+                        <f:param name="pageId" value="#{page.pageId}"/>
                     </h:link>
                 </h:column>
 
                 <h:column>
-                    <f:facet name="header"><h:outputText value="#{msg['last-name']}"/></f:facet>
-                    <h:outputText value="#{user.lastName}"/>
+                    <f:facet name="header"><h:outputText value="#{msg['type']}"/></f:facet>
+                    <h:outputText value="#{msg[page.type.label]}"/>
                 </h:column>
-
-                <h:column>
-                    <f:facet name="header"><h:outputText value="#{msg['user-name']}"/></f:facet>
-                    <h:outputText value="#{user.userName}"/>
+                
+                 <h:column>
+                    <f:facet name="header"><h:outputText value="#{msg['order-no']}"/></f:facet>
+                    <h:outputText value="#{page.orderNo}"/>
                 </h:column>
-
-                <h:column>
-                    <f:facet name="header"><h:outputText value="#{msg['disabled']}"/></f:facet>
-                    <h:outputText value="#{user.disabled ? 'True' : 'False'}"/>
-                </h:column>
-
 
                 <f:facet name="footer">
-                    <h:outputText rendered="#{usersBackingBean.users ==  null || usersBackingBean.users.size() == 0}" class="empty-table-message" value="#{msg['no-row-was-found']}"/>
+                    <h:outputText rendered="#{pageBean.instances ==  null || pageBean.instances.size() == 0}" class="empty-table-message" value="#{msg['no-row-was-found']}"/>
                 </f:facet>
             </h:dataTable>
 
-            <h:button value="#{msg['add-new-user']}" outcome="edit?faces-redirect=true"/>
+            <h:button value="#{msg['add']}" outcome="edit?faces-redirect=true"/>
         </h:form>
     </ui:define>
 </ui:composition>
