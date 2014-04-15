@@ -1,12 +1,36 @@
 <ui:composition
     xmlns="http://www.w3.org/1999/xhtml"
-    xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+    xmlns:ui="http://java.sun.com/jsf/facelets"
     template="/template/template.xhtml"
-    xmlns:h="http://xmlns.jcp.org/jsf/html"
->
-    
+    xmlns:h="http://java.sun.com/jsf/html"
+
+    xmlns:f="http://java.sun.com/jsf/core">
+    <f:metadata>
+        <f:viewParam name="categoryId" value="#{listDocumentBean.categoryId}"/>
+        <f:event type="preRenderComponent" listener="#{listDocumentBean.loadDocuments}"/>
+    </f:metadata>
     <ui:define name="body">
-        <div class="content"></div>
+        <div class="content">
+            <h:panelGroup rendered="#{listDocumentBean.documents != null}">
+                <div class="document-list">
+                    <ui:repeat value="#{listDocumentBean.documents}" var="doc">
+                        <div class="document-list-item">
+                            <h:link value="${doc.title}" class="document-list-item-title" outcome="document?faces-redirect=true">
+                                <f:param name="documentId" value="${doc.documentId}"/>  
+                            </h:link>
+                            
+                            <div class="document-list-item-description">
+                                Description of document
+                            </div>
+                            
+                            <h:link value="${msg['read-more']}" class="document-list-item-readmore" outcome="document?faces-redirect=true">
+                                <f:param name="documentId" value="${doc.documentId}"/>  
+                            </h:link>
+                        </div>
+                    </ui:repeat>
+                </div>
+            </h:panelGroup>
+        </div>
     </ui:define>
-    
+
 </ui:composition>

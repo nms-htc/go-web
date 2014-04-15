@@ -1,13 +1,20 @@
 <ui:composition
     xmlns="http://www.w3.org/1999/xhtml"
-    xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+    xmlns:ui="http://java.sun.com/jsf/facelets"
     template="/template/template.xhtml"
-    xmlns:h="http://xmlns.jcp.org/jsf/html"
->
+    xmlns:h="http://java.sun.com/jsf/html"
+    xmlns:f="http://java.sun.com/jsf/core">
+    <f:metadata>
+        <f:viewParam name="documentId" value="#{singleDocumentBean.documentId}"/>
+        <f:event type="preRenderComponent" listener="#{singleDocumentBean.loadDocument}"/>
+    </f:metadata>
     
     <ui:define name="body">
         <div class="content">
-            
+            <h3 class="document-title"><h:outputText value="#{singleDocumentBean.document.title}"/></h3>
+            <div class="document-content">
+                <h:outputText value="#{singleDocumentBean.document.content}" escape="false"/>
+            </div>
         </div>
     </ui:define>
     
