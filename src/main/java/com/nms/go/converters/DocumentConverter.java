@@ -27,16 +27,7 @@ public class DocumentConverter implements Converter {
 
     @Override
     public Object getAsObject(FacesContext context, UIComponent component, String value) {
-        if (value != null) {
-            try {
-                Long documentId = Long.valueOf(value);
-                Document document = documentService.load(documentId);
-                return document;
-            } catch (NumberFormatException e) {
-                return null;
-            }
-        }
-        return null;
+        return  documentService.load(Long.valueOf(value));
     }
 
     @Override

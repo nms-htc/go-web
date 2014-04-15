@@ -113,4 +113,16 @@ public class PageBean extends BaseBackingBean<Page, PageService> implements Seri
     public void setDocumentId(Long documentId) {
         this.documentId = documentId;
     }
+
+    @Override
+    public void setId(Long id) {
+        super.setId(id);
+        if (instance != null) {
+            if (instance.getCategory() != null) {
+                documents = documentService.findByCategory(instance.getCategory());
+            }
+        }
+    }
+    
+    
 }

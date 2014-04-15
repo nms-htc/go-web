@@ -9,22 +9,42 @@ and open the template in the editor.
 */
 @import "reset.css";
 
+html {
+    background: url('../images/bg.jpg') #F58220 no-repeat top center;
+    height: 100%;
+}
+
 body {
     font-family: Arial,Helvetica,sans-serif;
     font-size: 12px;
+    min-height: 700px;
+    height: 100%;
 }
 
 #wrapper {
-    width: 1280px;
+    width: 1024px;
     margin: 0 auto;
+    height: 100%;
 }
 
 #main-content {
-    padding: 5px;
+    height: 100%;
 }
 
 div#header {
     height: 100px;
+}
+
+div#footer {
+
+    height: 40px;
+}
+
+div#footer p {
+    color: #f1f1f1;
+    font-weight: bold;
+    text-align: right;
+    margin: 10px;
 }
 
 #mainNav {
@@ -35,20 +55,30 @@ div#header {
     height: 40px;
     display: block;
     border-radius: 10px 10px 10px 10px;
-    width: 100%;
-    padding-left: 10px;
     background: #f1f1f1;
+    padding: 0 8px;
+    box-shadow: 0 0 10px #fff;
+    -moz-box-shadow: 0 0 10px #fff;
+    -webkit-box-shadow: 0 0 10px #fff;
 }
 
 button, input[type=submit], a.button-link, input[type=button] {
-    font-size: 16px;
+    font-size: 12px;
     line-height: 12px;
+    font-weight: bold;
     padding: 5px;
     background: #fff;
     color: #414141;
     border: 1px solid #515151;
     border-radius: 5px;
+    -moz-border-radius: 5px;
+    -webkit-border-radius: 5px;
     margin: 5px 5px 5px 0;
+}
+
+option {
+    background: #fff;
+    outline: none;
 }
 
 
@@ -65,14 +95,21 @@ button:hover, input[type=submit]:hover,input[type=button]:hover, a.button-link:h
 #mainNav ul li a {
     /*    display:block;*/
     float: left;
-    line-height: 15px;
-    padding: 10px;
+    line-height: 12px;
+    padding: 14px;
     color:  #414141;
+    font-weight: bold;
 }
 
 #mainNav ul li a:hover {
     background:  #F58220;
     color: #f1f1f1;
+}
+
+/*main content*/
+div#main-content {
+    height: auto;
+    margin:10px 0;
 }
 
 h1 {
@@ -123,8 +160,10 @@ h1 {
 
 /*form stylesheet*/
 
-input[type=text] {
+input[type=text], select {
     outline: none;
+    border: 1px solid #c5c5c5;
+    padding: 2px;
 }
 
 div.form-field {
@@ -141,4 +180,13 @@ div.form-field label {
 
 .clear {
     clear: both;
+}
+
+.content {
+    border-radius: 10px;
+    -moz-border-radius: 10px;
+    -webkit-border-radius: 10px;
+    background: #f2f2f2;
+    opacity: 1;
+    padding: 10px;
 }

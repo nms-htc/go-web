@@ -4,50 +4,51 @@
     template="../../template/admin_template.xhtml"
     xmlns:h="http://java.sun.com/jsf/html"
     xmlns:f="http://java.sun.com/jsf/core">
-    
+
     <f:metadata>
         <f:viewParam name="userId" value="#{userBean.id}"/>
     </f:metadata>
 
     <ui:define name="body">
+        <div class="content">
+            <h1><h:outputText value="#{msg['add-new-user']}"/></h1>
 
-        <h1><h:outputText value="#{msg['add-new-user']}"/></h1>
 
+            <h:form>
 
-        <h:form>
-            
-            <div class="form-field">
-                <label for="userName">#{msg['user-name']}</label>
-                <h:inputText id="userName" value="#{userBean.instance.userName}"/>
-            </div>
-            
-            <div class="form-field">
-                <label for="firstName">#{msg['first-name']}</label>
-                <h:inputText id="firstName" value="#{userBean.instance.firstName}"/>
-            </div>
-            
-            <div class="form-field">
-                <label for="lastName">#{msg['last-name']}</label>
-                <h:inputText id="lastName" value="#{userBean.instance.lastName}"/>
-            </div>
-            
-            <div class="form-field">
-                <label for="middleName">#{msg['middle-name']}</label>
-                <h:inputText id="middleName" value="#{userBean.instance.middleName}"/>
-            </div>
-            
-            <div class="form-field">
-                <label for="password">#{msg['password']}</label>
-                <h:inputText id="password" value="#{userBean.instance.password}"/>
-            </div>
-            
-            <h:commandButton value="#{msg['save']}" action="#{userBean.save()}" onclick="if (!confirm('#{msg['do-you-want-to-update']}')) return false">
-                <f:param name="userId" value="#{param.userId}"/>
-            </h:commandButton>
-            
-            <h:button value="#{msg['cancel']}" outcome="list?faces-redirect=true"/>
-            
-        </h:form>
+                <div class="form-field">
+                    <label for="userName">#{msg['user-name']}</label>
+                    <h:inputText id="userName" value="#{userBean.instance.userName}"/>
+                </div>
 
+                <div class="form-field">
+                    <label for="firstName">#{msg['first-name']}</label>
+                    <h:inputText id="firstName" value="#{userBean.instance.firstName}"/>
+                </div>
+
+                <div class="form-field">
+                    <label for="lastName">#{msg['last-name']}</label>
+                    <h:inputText id="lastName" value="#{userBean.instance.lastName}"/>
+                </div>
+
+                <div class="form-field">
+                    <label for="middleName">#{msg['middle-name']}</label>
+                    <h:inputText id="middleName" value="#{userBean.instance.middleName}"/>
+                </div>
+
+                <div class="form-field">
+                    <label for="password">#{msg['password']}</label>
+                    <h:inputText id="password" value="#{userBean.instance.password}"/>
+                </div>
+
+                <h:commandButton value="#{msg['save']}" action="#{userBean.save()}" onclick="if (!confirm('#{msg['do-you-want-to-update']}'))
+                        return false">
+                    <f:param name="userId" value="#{param.userId}"/>
+                </h:commandButton>
+
+                <h:button value="#{msg['cancel']}" outcome="list?faces-redirect=true"/>
+
+            </h:form>
+        </div>
     </ui:define>
 </ui:composition>

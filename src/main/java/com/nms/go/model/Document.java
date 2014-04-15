@@ -117,9 +117,25 @@ public class Document implements Serializable {
             hash += documentId.hashCode();
         }
 
+        if (createdDate != null) {
+            hash += createdDate.hashCode();
+        }
+        if (user != null) {
+            hash += user.hashCode();
+        }
+        if (title != null) {
+            hash += title.hashCode();
+        }
+        if (imageUrl != null) {
+            hash += imageUrl.hashCode();
+        }
+        if (content != null) {
+            hash += content.hashCode();
+        }
         if (category != null) {
             hash += category.hashCode();
         }
+        
         return hash;
     }
 
@@ -128,20 +144,31 @@ public class Document implements Serializable {
         if (obj == null) {
             return false;
         }
-        if (!(obj instanceof Document)) {
+        if (getClass() != obj.getClass()) {
             return false;
         }
-        Document other = (Document) obj;
-        if ((this.getDocumentId() == null && other.getDocumentId() != null) || (this.getDocumentId() != null && !this.getDocumentId().equals(other.getDocumentId()))) {
+        final Document other = (Document) obj;
+        if (!Objects.equals(this.documentId, other.documentId)) {
             return false;
         }
-
-        if ((this.getCategory() == null && other.getCategory() != null) || (this.getCategory() != null && !this.getCategory().equals(other.getCategory()))) {
-            
+        if (!Objects.equals(this.createdDate, other.createdDate)) {
             return false;
         }
-        
+        if (!Objects.equals(this.user, other.user)) {
+            return false;
+        }
+        if (!Objects.equals(this.title, other.title)) {
+            return false;
+        }
+        if (!Objects.equals(this.imageUrl, other.imageUrl)) {
+            return false;
+        }
+        if (!Objects.equals(this.content, other.content)) {
+            return false;
+        }
+        if (!Objects.equals(this.category, other.category)) {
+            return false;
+        }
         return true;
     }
-
 }

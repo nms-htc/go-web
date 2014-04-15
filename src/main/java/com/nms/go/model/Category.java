@@ -115,10 +115,7 @@ public class Category implements Serializable {
         if (!Objects.equals(this.createDate, other.createDate)) {
             return false;
         }
-        if (!Objects.equals(this.title, other.title)) {
-            return false;
-        }
-        return true;
+        return Objects.equals(this.title, other.title);
     }
     
     

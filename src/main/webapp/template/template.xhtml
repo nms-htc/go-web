@@ -2,10 +2,27 @@
     xmlns="http://www.w3.org/1999/xhtml"
     xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
     template="base_template.xhtml"
-    xmlns:h="http://xmlns.jcp.org/jsf/html">
+    xmlns:h="http://java.sun.com/jsf/html"
+    xmlns:f="http://xmlns.jcp.org/jsf/core">
 
     <ui:define name="nav">
-        <h:link value="#{msg['go-to-admin-page']}" outcome="goToAdmin"/>
+        <ul>
+            <li><h:link value="#{msg['home-page']}" outcome="home"/></li>
+            <ui:repeat value="#{navigationBean.pages}" var="page">
+                <li>
+                    
+                    <h:link value="#{page.title}" outcome="document" rendered="#{page.type == 'SINGLE_DOCUMENT'}">
+                        <f:param name="documentId" value="#{page.document.documentId}"/>
+                    </h:link>
+                    <h:link value="#{page.title}" outcome="list" rendered="#{page.type == 'LIST_DOCUMENT'}">
+                        <f:param name="categoryId" value="#{page.category.categoryId}"/>
+                    </h:link>
+                    <h:link value="#{page.title}" rendered="#{page.type == 'SPECIFIC_PAGE'}">
+                        <f:param name="pageUri" value="#{page.pageUri}"/>
+                    </h:link>
+                </li>
+            </ui:repeat>
+        </ul>
     </ui:define>
 
     <ui:define name="body">

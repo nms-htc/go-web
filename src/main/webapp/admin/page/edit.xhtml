@@ -10,72 +10,83 @@
     </f:metadata>
 
     <ui:define name="body">
-
-        <h1><h:outputText value="#{msg['add-new-page']}"/></h1>
-
-
-        <h:form>
-
-            <div class="form-field">
-                <label for="title">#{msg['title']}</label>
-                <h:inputText id="title" value="#{pageBean.instance.title}"/>
-            </div>
-
-            <div class="form-field">
-                <label for="type">#{msg['type']}</label>
-                <h:selectOneMenu id="type" value="#{pageBean.instance.type}" 
-                                 converter="#{pageTypeConverter}">
-                    <f:selectItems value="#{pageBean.pageTypes}" 
-                                   var="pageType" 
-                                   itemLabel="#{msg[pageType.label]}" 
-                                   itemValue="#{pageType}"/>
-                </h:selectOneMenu>
-            </div>
-            
-            <div class="form-field">
-                <h:outputLabel value="#{msg['category']}"/>
-                <h:selectOneMenu 
-                    value="#{pageBean.instance.category}" 
-                    converter="#{categoryConverter}"
-                    valueChangeListener="#{pageBean.categoryChange}"
-                >
-                    <f:selectItem itemLabel="--Select--"/>
-                    <f:selectItems 
-                        value="#{pageBean.categories}" 
-                        var="category" 
-                        itemLabel="#{category.title}" 
-                        itemValue="#{category}" 
-                        
-                    />
-                    <f:ajax render="document"/>
-                </h:selectOneMenu>
-            </div>
-            
-            <div class="form-field">
-                <h:outputLabel value="#{msg['document']}" for="document"/>
-                <h:selectOneMenu 
-                    id="document" 
-                    value="#{pageBean.documentId}"
-                >
-                    <f:selectItem itemLabel="--Select--"    />
-                   
-                </h:selectOneMenu>
-            </div>
-
-            <div class="form-field">
-                <h:outputLabel value="#{msg['page-uri']}" for="pageUri"/>
-                <h:inputText id="pageUri" value="#{pageBean.instance.pageUri}"/>
-            </div>
+        <div class="content">
+            <h1><h:outputText value="#{msg['add-new-page']}"/></h1>
 
 
-            <h:commandButton value="#{msg['save']}" action="#{pageBean.save()}" onclick="if (!confirm('#{msg['do-you-want-to-update']}'))
-                        return false">
-                <f:param name="pageId" value="#{param.pageId}"/>
-            </h:commandButton>
+            <h:form>
 
-            <h:button value="#{msg['cancel']}" outcome="list?faces-redirect=true"/>
+                <div class="form-field">
+                    <label for="title">#{msg['title']}</label>
+                    <h:inputText id="title" value="#{pageBean.instance.title}"/>
+                </div>
 
-        </h:form>
+                <div class="form-field">
+                    <label for="type">#{msg['type']}</label>
+                    <h:selectOneMenu id="type" value="#{pageBean.instance.type}" 
+                                     converter="#{pageTypeConverter}">
+                        <f:selectItems value="#{pageBean.pageTypes}" 
+                                       var="pageType" 
+                                       itemLabel="#{msg[pageType.label]}" 
+                                       itemValue="#{pageType}"/>
+                    </h:selectOneMenu>
+                </div>
 
+                <div class="form-field">
+                    <h:outputLabel value="#{msg['category']}"/>
+                    <h:selectOneMenu 
+                        value="#{pageBean.instance.category}" 
+                        converter="#{categoryConverter}"
+                        valueChangeListener="#{pageBean.categoryChange}"
+                        immediate="true"
+                        >
+                        <f:selectItem itemLabel="--Select--"/>
+                        <f:selectItems 
+                            value="#{pageBean.categories}" 
+                            var="category" 
+                            itemLabel="#{category.title}" 
+                            itemValue="#{category}" 
+
+                            />
+                        <f:ajax render="document"/>
+                    </h:selectOneMenu>
+                </div>
+
+                <div class="form-field">
+                    <h:outputLabel value="#{msg['document']}" for="document"/>
+                    <h:selectOneMenu 
+                        id="document" 
+                        value="#{pageBean.instance.document}"
+                        converter="#{documentConverter}"
+                        >
+                        <f:selectItem itemLabel="--Select Item--"/>
+                        <f:selectItems value="#{pageBean.documents}" var="document" itemLabel="#{document.title}" itemValue="#{document}"/>
+                    </h:selectOneMenu>
+                </div>
+
+                <div class="form-field">
+                    <h:outputLabel for="orderNo" value="#{msg['order-no']}"/>
+                    <h:inputText id="orderNo" value="#{pageBean.instance.orderNo}"/>
+                </div>
+
+                <div class="form-field">
+                    <h:outputLabel value="#{msg['page-uri']}" for="pageUri"/>
+                    <h:inputText id="pageUri" value="#{pageBean.instance.pageUri}"/>
+                </div>
+
+
+                <h:commandButton 
+                    value="#{msg['save']}" 
+                    action="#{pageBean.save()}" 
+                    onclick="if (!confirm('#{msg['do-you-want-to-update']}'))
+                            return false" 
+                    >
+                    <f:param name="pageId" value="#{param.pageId}"/>
+                </h:commandButton>
+
+                <h:button value="#{msg['cancel']}" outcome="list?faces-redirect=true"/>
+
+            </h:form>
+        </div>
     </ui:define>
 </ui:composition>

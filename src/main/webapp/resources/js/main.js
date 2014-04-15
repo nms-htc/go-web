@@ -4,6 +4,8 @@
  * and open the template in the editor.
  */
 
-
-
-
+//$(document).ready(function() {
+//    if (screen.availHeight) {
+//        $('body').css('min-height', $(window).height());
+//    }
+//});

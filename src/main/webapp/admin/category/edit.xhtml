@@ -5,31 +5,35 @@
     xmlns:h="http://java.sun.com/jsf/html"
     xmlns:f="http://java.sun.com/jsf/core"
     xmlns:fn="http://java.sun.com/jstl/functions">
-    
+
     <f:metadata>
         <f:viewParam name="categoryId" value="#{categoryBean.id}"/>
     </f:metadata>
 
     <ui:define name="body">
+        <div class="content">
 
-        <h1><h:outputText value="#{msg['add-new-category']}"/></h1>
+            <h1><h:outputText value="#{msg['add-new-category']}"/></h1>
 
 
-        <h:form>
-            
-            <div class="form-field">
-                <label for="title">#{msg['title']}</label>
-                <h:inputText id="userName" value="#{categoryBean.instance.title}"/>
-            </div>
-            
-            
-            <h:commandButton value="#{msg['save']}" action="#{categoryBean.save()}" onclick="if (!confirm('#{msg['do-you-want-to-update']}')) return false">
-                <f:param name="categoryId" value="#{param.categoryId}"/>
-            </h:commandButton>
-            
-            <h:button value="#{msg['cancel']}" outcome="list?faces-redirect=true"/>
-            
-        </h:form>
+            <h:form>
+
+                <div class="form-field">
+                    <label for="title">#{msg['title']}</label>
+                    <h:inputText id="userName" value="#{categoryBean.instance.title}"/>
+                </div>
+
+
+                <h:commandButton value="#{msg['save']}" action="#{categoryBean.save()}" onclick="if (!confirm('#{msg['do-you-want-to-update']}'))
+                        return false">
+                    <f:param name="categoryId" value="#{param.categoryId}"/>
+                </h:commandButton>
+
+                <h:button value="#{msg['cancel']}" outcome="list?faces-redirect=true"/>
+
+            </h:form>
+
+        </div>
 
     </ui:define>
 </ui:composition>
