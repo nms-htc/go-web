@@ -20,7 +20,7 @@ import org.springframework.stereotype.Component;
  * @author cuongnt
  */
 @Component
-@Scope("session")
+@Scope("request")
 public class NavigationBean implements Serializable {
     
     // serialVersionUID

@@ -17,9 +17,11 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
+import org.hibernate.annotations.Sort;
 
 /**
  *
@@ -48,8 +50,9 @@ public class Page implements Serializable {
     }
 
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
-    @Column(length = 10, nullable = false, unique = true)
+    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "GO_SEQ")
+    @SequenceGenerator(name = "GO_SEQ", sequenceName = "GO_SEQ")
+    @Column(length = 10)
     public Long getPageId() {
         return pageId;
     }
@@ -113,6 +116,7 @@ public class Page implements Serializable {
     }
     
     @ManyToOne
+    @JoinColumn(name = "documentId")
     public Document getDocument() {
         return document;
     }
@@ -122,6 +126,7 @@ public class Page implements Serializable {
     }
     
     @ManyToOne
+    @JoinColumn(name = "categoryId")
     public Category getCategory() {
         return category;
     }

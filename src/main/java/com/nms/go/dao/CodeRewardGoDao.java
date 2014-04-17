@@ -5,11 +5,13 @@
  */
 package com.nms.go.dao;
 
-import com.nms.go.model.Category;
+import com.nms.go.model.CodeRewardGo;
+import java.io.Serializable;
 
 /**
  *
- * @author cuongnt
+ * @author Cuong
  */
-public interface CategoryDao extends Dao<Category, Long> {
+public interface CodeRewardGoDao extends Dao<CodeRewardGo, Long> {
+
 }

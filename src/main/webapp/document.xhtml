@@ -11,10 +11,12 @@
     
     <ui:define name="body">
         <div class="content">
+            <h:panelGroup rendered="#{singleDocumentBean.document != null}">
             <h3 class="document-title"><h:outputText value="#{singleDocumentBean.document.title}"/></h3>
             <div class="document-content">
                 <h:outputText value="#{singleDocumentBean.document.content}" escape="false"/>
             </div>
+            </h:panelGroup>
         </div>
     </ui:define>
     

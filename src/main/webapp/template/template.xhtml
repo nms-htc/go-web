@@ -12,13 +12,13 @@
                 <li>
                     
                     <h:link value="#{page.title}" outcome="document" rendered="#{page.type == 'SINGLE_DOCUMENT'}">
-                        <f:param name="documentId" value="#{page.document.documentId}"/>
+                        <f:param name="documentId" value="#{page.document.documentId}" rendered="#{page.document != null}"/>
                     </h:link>
                     <h:link value="#{page.title}" outcome="list" rendered="#{page.type == 'LIST_DOCUMENT'}">
-                        <f:param name="categoryId" value="#{page.category.categoryId}"/>
+                        <f:param name="categoryId" value="#{page.category.categoryId}" rendered="#{page.category != null}"/>
                     </h:link>
                     <h:link value="#{page.title}" rendered="#{page.type == 'SPECIFIC_PAGE'}">
-                        <f:param name="pageUri" value="#{page.pageUri}"/>
+<!--                        <f:param name="pageUri" value="#{page.pageUri}" rendered="#{page.pageUri != null}"/>-->
                     </h:link>
                 </li>
             </ui:repeat>

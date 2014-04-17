@@ -96,8 +96,9 @@ public abstract class DaoImpl<T, ID extends Serializable> implements Dao<T, ID> 
 
     @Override
     public T makePersistent(T entity) {
-        sessionFactory.getCurrentSession().saveOrUpdate(entity);
-        sessionFactory.getCurrentSession().clear();
+        sessionFactory.getCurrentSession().save(entity);
+        sessionFactory.getCurrentSession().flush();
+        sessionFactory.getCurrentSession().refresh(entity);
         return entity;
     }
 
