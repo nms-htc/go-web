@@ -10,8 +10,8 @@ and open the template in the editor.
 @import "reset.css";
 
 html {
-    background: url('../images/bg.jpg') #F58220 no-repeat top center;
-    height: 1200px;
+    background: url('../images/bg1.jpg') #F58220 no-repeat top center;
+    height: 980px;
 }
 
 a, a:active {
@@ -37,8 +37,17 @@ body {
 }
 
 div#header {
-    height: 100px;
+    height: 80px;
+    text-align: right;
+    padding: 10px;
 }
+
+div#header a {
+    color: #f1f1f1;
+    opacity: .5;
+}
+
+
 
 div#footer {
 
@@ -62,9 +71,9 @@ div#footer p {
     border-radius: 10px 10px 10px 10px;
     background: #f1f1f1;
     padding: 0 8px;
-    box-shadow: 0 0 10px #fff;
+/*    box-shadow: 0 0 10px #fff;
     -moz-box-shadow: 0 0 10px #fff;
-    -webkit-box-shadow: 0 0 10px #fff;
+    -webkit-box-shadow: 0 0 10px #fff;*/
 }
 
 button, input[type=submit], a.button-link, input[type=button] {
@@ -195,7 +204,7 @@ div.form-field label {
     background: #fff;
     padding:20px 20px;
     padding-left: 30px;
-    height: 980px;
+    height: 760px;
     overflow: auto;
     color: #575757;
 }
