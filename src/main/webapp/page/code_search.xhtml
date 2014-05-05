@@ -1,0 +1,62 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+    <h:head>
+        <h:outputStylesheet>
+            
+            #searchContainer .form-field label {
+            display:block;
+            float:none;
+            }
+        </h:outputStylesheet>
+    </h:head>
+    <h:body>
+        <h:messages/>
+        <h:form prependId="false">
+            <div id="searchContainer">
+
+                <h1>#{msg['search-code']}</h1>
+                <div class="form-field">
+
+                    <label for="title">#{msg['isdn']}</label>
+                    <h:inputText id="title" value="#{searchCode.isdn}"/>
+                    <h:commandButton value="Tra cuu" actionListener="#{searchCode.search}" action="specific_page">
+                        <f:param name="pageUri" value="#{param['pageUri']}"/>
+                    </h:commandButton>
+                </div>
+            </div>
+            <div class="separator"></div>
+            <h:panelGroup id="codeList">
+                <h2><h:outputText value="#{msg['reward-code-list']}"/></h2>
+                <h:dataTable 
+                    value="${searchCode.list}"
+                    var="code"
+                    border="1"
+                    width="900"
+                    headerClass="data-table-header"
+                    styleClass="data-table"
+                    rowClasses="data-table-odd-row,data-table-even-row"
+                    footerClass="data-table-footer"
+                    >
+                    <h:column>
+                        <f:facet name="header"><h:outputText value="#{msg['isdn']}"/></f:facet>
+
+                        <h:outputText value="#{code.isdn}"/>
+                    </h:column>
+
+                    <h:column>
+                        <f:facet name="header"><h:outputText value="#{msg['reward-code']}"/></f:facet>
+                        <h:outputText value="#{code.codeReward}"/>
+                    </h:column>
+
+                    <f:facet name="footer">
+                        <h:outputText rendered="#{searchCode.list ==  null || searchCode.list.size() == 0}" class="empty-table-message" value="#{msg['no-row-was-found']}"/>
+                    </f:facet>
+                </h:dataTable>
+            </h:panelGroup>
+        </h:form>
+    </h:body>
+</html>

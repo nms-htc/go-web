@@ -3,16 +3,15 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package com.nms.go.dao;
+package com.nms.go.service;
 
 import com.nms.go.model.CodeRewardGo;
-import java.io.Serializable;
 import java.util.List;
 
 /**
  *
- * @author Cuong
+ * @author CuongNT
  */
-public interface CodeRewardGoDao extends Dao<CodeRewardGo, Long> {
+public interface CodeRewardGoService extends BaseService<CodeRewardGo, Long> {
     public List<CodeRewardGo> findByIsdn(String isdn);
 }

@@ -17,8 +17,8 @@
                     <h:link value="#{page.title}" outcome="list" rendered="#{page.type == 'LIST_DOCUMENT'}">
                         <f:param name="categoryId" value="#{page.category.categoryId}" rendered="#{page.category != null}"/>
                     </h:link>
-                    <h:link value="#{page.title}" rendered="#{page.type == 'SPECIFIC_PAGE'}">
-<!--                        <f:param name="pageUri" value="#{page.pageUri}" rendered="#{page.pageUri != null}"/>-->
+                    <h:link value="#{page.title}" outcome="specific_page" rendered="#{page.type == 'SPECIFIC_PAGE'}">
+                        <f:param name="pageUri" value="#{page.pageUri}" rendered="#{page.pageUri != null}"/>
                     </h:link>
                 </li>
             </ui:repeat>
