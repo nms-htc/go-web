@@ -9,6 +9,8 @@ and open the template in the editor.
 */
 @import "reset.css";
 
+
+
 html {
     background: url('../images/bg1.jpg') #F58220 no-repeat top center;
     height: 980px;
@@ -108,6 +110,7 @@ button:hover, input[type=submit]:hover,input[type=button]:hover, a.button-link:h
 
 #mainNav ul li a {
     /*    display:block;*/
+    white-space: nowrap;
     float: left;
     line-height: 12px;
     padding: 14px;
