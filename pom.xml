@@ -84,7 +84,7 @@
             <version>${jsf.version}</version>
         </dependency-->
         
-<!--         JSR-330  -->
+        <!--         JSR-330  -->
         
         <!--dependency>
             <groupId>javax.inject</groupId>
@@ -127,7 +127,7 @@
             <groupId>mysql</groupId>
             <artifactId>mysql-connector-java</artifactId>
             <version>5.1.30</version>
-            <scope>compile</scope>
+            <scope>provided</scope>
         </dependency>
         
         <!-- EL -->
@@ -139,8 +139,9 @@
         </dependency>-->
         <dependency>
             <groupId>com.oracle</groupId>
-            <artifactId>ojdbc6</artifactId>
-            <version>11.2.0</version>
+            <artifactId>ojdbc14</artifactId>
+            <version>10.2.0.3.0</version>
+            <scope>provided</scope>
         </dependency>
     </dependencies>
     
